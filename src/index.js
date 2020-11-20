@@ -448,6 +448,19 @@ class FocusableSection extends Component {
     this.el.addEventListener('sn:enter-up', this._componentClickEnter, FocusableSection.eventOptions);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { neighborUp: up, neighborDown: down, neighborLeft: left, neighborRight: right } = this.props;
+    const { neighborUp, neighborDown, neighborLeft, neighborRight } = prevProps;
+
+    if (neighborUp === up && neighborDown === down && neighborLeft === left && neighborRight === right) {
+      return;
+    }
+
+    JsSpatialNavigation.set(this.sectionId, {
+      leaveFor: {up, down, left, right}
+    });
+  }
+
   componentWillUnmount() {
     JsSpatialNavigation.remove(this.sectionId);
 
