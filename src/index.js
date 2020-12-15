@@ -222,6 +222,7 @@ class Focusable extends Component {
   }
 
   componentWillUnmount() {
+    this.el.removeEventListener('sn:willfocus', this._componentWillFocus);
     this.el.removeEventListener('sn:focused', this._componentFocused);
     this.el.removeEventListener('sn:unfocused', this._componentUnfocused);
     this.el.removeEventListener('sn:enter-up', this._componentClickEnter);
@@ -464,10 +465,10 @@ class FocusableSection extends Component {
   componentWillUnmount() {
     JsSpatialNavigation.remove(this.sectionId);
 
+    this.el.removeEventListener('sn:willfocus', this._componentKeyDown, FocusableSection.eventOptions);
     this.el.removeEventListener('sn:focused', this._componentFocused, FocusableSection.eventOptions);
     this.el.removeEventListener('sn:unfocused', this._componentUnfocused, FocusableSection.eventOptions);
     this.el.removeEventListener('sn:enter-up', this._componentClickEnter, FocusableSection.eventOptions);
-    this.el.removeEventListener('keydown', this._componentKeyDown, FocusableSection.eventOptions);
   }
 
   render() {
