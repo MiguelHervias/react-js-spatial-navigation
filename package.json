@@ -1,6 +1,6 @@
 {
   "name": "react-js-spatial-navigation",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "A wrapper of js-spatial-navigation to react components",
   "main": "build/index.js",
   "bugs": {
@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "react": "^15.5.4",
+    "react-with-forwarded-ref": "^0.3.3",
     "webpack": "4.39.1",
+    "webpack-auto-inject-version": "^1.2.2",
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
@@ -34,7 +36,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-stage-0": "^6.0.15",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-stage-0": "^6.0.15"
   }
 }

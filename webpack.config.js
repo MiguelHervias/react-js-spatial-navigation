@@ -1,4 +1,5 @@
 var path = require('path');
+var WebpackAutoInject = require('webpack-auto-inject-version');
 
 module.exports = {
   entry: './src/index.js',
@@ -22,6 +23,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new WebpackAutoInject()
+  ],
   externals: {
     'react': 'commonjs react'
   }
