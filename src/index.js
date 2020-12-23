@@ -473,6 +473,8 @@ class FocusableSection extends Component {
     this.el.current.removeEventListener('sn:focused', this._componentFocused, FocusableSection.eventOptions);
     this.el.current.removeEventListener('sn:unfocused', this._componentUnfocused, FocusableSection.eventOptions);
     this.el.current.removeEventListener('sn:enter-up', this._componentClickEnter, FocusableSection.eventOptions);
+
+    this.el = null;
   }
 
   render() {
