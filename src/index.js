@@ -321,7 +321,8 @@ class FocusableSection extends Component {
     onBeforeFocus: PropTypes.func,
     onFocus: PropTypes.func,
     onClickEnter: PropTypes.func,
-    onUnfocus: PropTypes.func
+    onUnfocus: PropTypes.func,
+    role: PropTypes.string,
   };
 
   static defaultProps = {
@@ -334,7 +335,8 @@ class FocusableSection extends Component {
     onBeforeChildFocus: null,
     onFocus: null,
     onClickEnter: null,
-    onUnfocus: null
+    onUnfocus: null,
+    role: null,
   };
 
   static eventOptions = true;//use capture, using boolean vs option because need to support older webkit < 10
@@ -487,7 +489,7 @@ class FocusableSection extends Component {
     }
 
     return (
-      <div className={classNames.join(' ')} id={id} ref={el}>
+      <div className={classNames.join(' ')} id={id} ref={el} role={role}>
         {children}
       </div>
     );
