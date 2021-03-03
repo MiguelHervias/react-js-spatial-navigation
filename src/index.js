@@ -480,7 +480,7 @@ class FocusableSection extends Component {
   }
 
   render() {
-    const { className, id, children } = this.props;
+    const { className, id, children, role } = this.props;
     const {el} = this;
     let classNames = [];
 
