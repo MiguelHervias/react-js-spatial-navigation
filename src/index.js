@@ -480,7 +480,7 @@ class FocusableSection extends Component {
   }
 
   render() {
-    const { className, id, children, role } = this.props;
+    const { className, id, children, role, 'aria-label': ariaLabel } = this.props;
     const {el} = this;
     let classNames = [];
 
@@ -489,7 +489,7 @@ class FocusableSection extends Component {
     }
 
     return (
-      <div className={classNames.join(' ')} id={id} ref={el} role={role}>
+      <div className={classNames.join(' ')} id={id} ref={el} role={role} aria-label={ariaLabel}>
         {children}
       </div>
     );
