@@ -319,6 +319,7 @@ class FocusableSection extends Component {
     neighborDown: PropTypes.string,
     neighborLeft: PropTypes.string,
     onBeforeFocus: PropTypes.func,
+    onBeforeChildFocus: PropTypes.func,
     onFocus: PropTypes.func,
     onClickEnter: PropTypes.func,
     onUnfocus: PropTypes.func,
