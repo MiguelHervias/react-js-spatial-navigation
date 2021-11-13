@@ -31,19 +31,23 @@ var GlobalConfig = {
   restrict: 'self-first', // 'self-first', 'self-only', 'none'
   tabIndexIgnoreList:
     'a, input, select, textarea, button, iframe, [contentEditable=true]',
-  navigableFilter: null
+  navigableFilter: null,
+  keyMapping: {
+    directions: {
+      '37': 'left',
+      '38': 'up',
+      '39': 'right',
+      '40': 'down'
+    },
+    enter: {
+      '13': 'enter'
+    }
+  }
 };
 
 /*********************/
 /* Constant Variable */
 /*********************/
-var KEYMAPPING = {
-  '37': 'left',
-  '38': 'up',
-  '39': 'right',
-  '40': 'down'
-};
-
 var REVERSE = {
   'left': 'right',
   'up': 'down',
@@ -857,9 +861,10 @@ function onKeyDown(evt) {
     return false;
   };
 
-  var direction = KEYMAPPING[evt.keyCode];
+  var direction = GlobalConfig.keyMapping.directions[evt.keyCode];
   if (!direction) {
-    if (evt.keyCode == 13) {
+    var enter = GlobalConfig.keyMapping.enter[evt.keyCode];
+    if (enter) {
       currentFocusedElement = getCurrentFocusedElement();
       if (currentFocusedElement && getSectionId(currentFocusedElement)) {
         if (!fireEvent(currentFocusedElement, 'enter-down')) {
@@ -968,8 +973,8 @@ function onBlur(evt) {
 var JsSpatialNavigation = {
   init: function(config) {
     if (!_ready) {
-      if (config) {
-        GlobalConfig = config;
+      if (config && typeof config.initConfig === 'object') {
+        GlobalConfig = Object.assign(GlobalConfig, config.initConfig);
       }
 
       window.addEventListener('keydown', onKeyDown);

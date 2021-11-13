@@ -93,6 +93,11 @@ class SpatialNavigation extends Component {
       propsConfig.tabIndexIgnoreList = this.props.tabIndexIgnoreList;
     }
 
+    // Set custom init config
+    if (typeof this.props.initConfig === 'object') {
+      propsConfig.initConfig = this.props.initConfig;
+    }
+
     return propsConfig;
   }
 
@@ -102,7 +107,7 @@ class SpatialNavigation extends Component {
 
   componentDidMount() {
     if (!this.props.customInit) {
-      JsSpatialNavigation.init();
+      JsSpatialNavigation.init(config);
       JsSpatialNavigation.add(config);
       JsSpatialNavigation.focus();
 
