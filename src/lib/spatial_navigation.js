@@ -610,6 +610,11 @@ function focusElement(elem, sectionId, direction) {
       currentFocusedElement.blur();
     }
     elem.focus({ preventScroll: false });
+    elem.scrollIntoView({
+      block: 'center',
+      inline: 'center',
+      behavior: 'smooth',
+    });
     focusChanged(elem, sectionId);
   };
 
@@ -652,6 +657,11 @@ function focusElement(elem, sectionId, direction) {
     return false;
   }
   elem.focus({ preventScroll: false });
+  elem.scrollIntoView({
+    block: 'center',
+    inline: 'center',
+    behavior: 'smooth',
+  });
   fireEvent(elem, 'focused', focusProperties, false);
 
   _duringFocusChange = false;
@@ -959,6 +969,11 @@ function onBlur(evt) {
       _duringFocusChange = true;
       setTimeout(function() {
         target.focus({ preventScroll: false });
+        target.scrollIntoView({
+          block: 'center',
+          inline: 'center',
+          behavior: 'smooth',
+        });
         _duringFocusChange = false;
       });
     } else {

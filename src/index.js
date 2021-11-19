@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { elementScrollIntoViewPolyfill } from "seamless-scroll-polyfill";
 
 import JsSpatialNavigation from './lib/spatial_navigation.js';
 import withForwardedRef from 'react-with-forwarded-ref';
+
+// Polyfill Samsung Tizen
+elementScrollIntoViewPolyfill();
 
 const defaultConfig = {
   activeClassName: 'active',
